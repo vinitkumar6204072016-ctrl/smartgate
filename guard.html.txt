@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartGate - Guard Scanner</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body class="bg-slate-900 text-white font-sans p-4 min-h-screen flex flex-col items-center justify-center">
+
+<div class="bg-slate-800 p-6 rounded-2xl shadow-2xl w-full max-w-md border border-slate-700">
+<div class="text-center mb-5">
+<h2 class="text-2xl font-bold text-emerald-400">SmartGate Guard Panel</h2>
+<p class="text-xs text-gray-400 mt-1">Main Gate QR Entry/Exit Scanner</p>
+</div>
+
+<div class="flex gap-4 mb-6">
+<button id="exitMode" onclick="setMode('EXIT')" class="flex-1 py-3 bg-red-600 font-bold rounded-xl shadow-md transition border-2 border-white text-white">
+🏃 Check-OUT (Exit)
+</button>
+<button id="entryMode" onclick="setMode('ENTRY')" class="flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md transition border-2 border-transparent">
+🏡 Check-IN (Entry)
+</button>
+</div>
+
+<div class="bg-slate-950 p-2 rounded-xl overflow-hidden mb-4 border border-slate-800">
+<div id="reader" class="w-full text-slate-400 text-xs"></div>
+</div>
+
+<div id="resultBox" class="hidden p-4 rounded-xl text-center font-semibold text-sm transition-all duration-200"></div>
+</div>
+
+<script>
+// AAPKA GOOGLE WEB APP API ENDPOINT HERE
+const API_URL = "https://script.google.com/macros/s/AKfycbw3KtaHElQgBzfpvrjIRkDawkPmVFkKsX6Ji0eB6PZfOVsy1CY4j_7yImpccrW30K91/exec";
+
+let currentMode = 'EXIT';
+let html5QrcodeScanner = null;
+
+function setMode(mode) {
+currentMode = mode;
+const exitBtn = document.getElementById('exitMode');
+const entryBtn = document.getElementById('entryMode');
+
+if(mode === 'EXIT') {
+exitBtn.className = "flex-1 py-3 bg-red-600 font-bold rounded-xl shadow-md border-2 border-white text-white text-center";
+entryBtn.className = "flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md border-2 border-transparent text-center";
+} else {
+entryBtn.className = "flex-1 py-3 bg-emerald-600 font-bold rounded-xl shadow-md border-2 border-white text-white text-center";
+exitBtn.className = "flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md border-2 border-transparent text-center";
+}
+}
+
+function onScanSuccess(decodedText, decodedResult) {
+// Haptic Feedback (Vibrate mobile when successful)
+if (navigator.vibrate) navigator.vibrate(120);
+
+const resultBox = document.getElementById('resultBox');
+resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-yellow-500 text-slate-900 block mb-2";
+resultBox.innerText = "Processing Cloud Sync Engine...";
+
+// Pause scanning while request is in progress to avoid double entries
+html5QrcodeScanner.clear().then(() => {
+const payload = {
+action: "scanPass",
+qrText: decodedText,
+type: currentMode
+};
+
+// Fire AJAX data pipeline to Google Cloud
+fetch(API_URL, {
+method: "POST",
+body: JSON.stringify(payload)
+})
+.then(res => res.json())
+.then(data => {
+if(data.success) {
+resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-emerald-500 text-white block mb-2 animate-bounce";
+} else {
+resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-rose-600 text-white block mb-2";
+}
+resultBox.innerText = data.message;
+})
+.catch(err => {
+resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-rose-600 text-white block mb-2";
+resultBox.innerText = "Network Engine Error!";
+console.error(err);
+})
+.finally(() => {
+// Restart scanner automatically after 3 seconds
+setTimeout(() => {
+startScanner();
+}, 3000);
+});
+});
+}
+
+function startScanner() {
+html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+fps: 15,
+qrbox: { width: 250, height: 250 },
+aspectRatio: 1.0
+});
+html5QrcodeScanner.render(onScanSuccess);
+}
+
+// Auto Start Camera Matrix-Scan Engine on Page Load
+startScanner();
+</script>
+</body>
+</html>
