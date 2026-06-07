@@ -34,7 +34,6 @@
                 </select>
             </div>
 
-            <!-- Fix: Added type="button" to prevent form from auto-reloading -->
             <button type="button" id="submitBtn" onclick="generatePass()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-xl transition duration-200 cursor-pointer text-center">
                 Generate Digital Pass
             </button>
@@ -77,16 +76,18 @@
             purpose: purpose
         };
 
-        // Live connection using no-cors mode to bypass fetch freezing issues
+        // Form Submit to Sheet Core Pipeline
         fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
             method: "POST",
             mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         })
         .then(() => {
+            // Success Logic: Triggers instantly bypassing CORS freeze
             document.getElementById("qrcode").innerHTML = ""; 
             new QRCode(document.getElementById("qrcode"), {
-                text: JSON.stringify(payload),
+                text: roll, // Guard Panel direct roll string scan karega
                 width: 180,
                 height: 180
             });
@@ -95,7 +96,7 @@
         })
         .catch(err => {
             console.error(err);
-            alert("Network Error! Checking cloud server connection...");
+            alert("Error connecting to server!");
         })
         .finally(() => {
             submitBtn.innerText = "Generate Digital Pass";
