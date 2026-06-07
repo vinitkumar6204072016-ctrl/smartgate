@@ -74,8 +74,8 @@
             purpose: purpose
         };
 
-        // Binit's New Live URL Integrated
-        fetch("https://script.google.com/macros/s/AKfycbzfRoUQnjczfiREph3w0M1M33AGYggz5YljIz-Og5pLQ1Zr_QS_foo9OX9FWfyGdNmb/exec", {
+        // Updated with your latest Web App Link
+        fetch("https://script.google.com/macros/s/AKfycbw6Vms56dcwJilwBgrHPMnFXp7mwfHzIxSBDmUJXhx-1TRx4VipGZMcC2SMqftQkgE3UA/exec", {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@
         .then(() => {
             document.getElementById("qrcode").innerHTML = ""; 
             new QRCode(document.getElementById("qrcode"), {
-                text: roll, 
+                text: roll,
                 width: 180,
                 height: 180
             });
