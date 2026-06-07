@@ -1,115 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartGate - Guard Scanner</title>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartGate Guard Panel</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-slate-900 text-white font-sans p-4 min-h-screen flex flex-col items-center justify-center">
+<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen p-4">
 
-<div class="bg-slate-800 p-6 rounded-2xl shadow-2xl w-full max-w-md border border-slate-700">
-<div class="text-center mb-5">
-<h2 class="text-2xl font-bold text-emerald-400">SmartGate Guard Panel</h2>
-<p class="text-xs text-gray-400 mt-1">Main Gate QR Entry/Exit Scanner</p>
-</div>
+    <div class="bg-slate-800 p-6 rounded-2xl shadow-xl w-full max-w-md border border-slate-700 text-center">
+        <h1 class="text-2xl font-bold text-emerald-400 mb-1">SmartGate Guard Panel</h1>
+        <p class="text-sm text-slate-400 mb-6">Main Gate QR Entry/Exit Scanner</p>
 
-<div class="flex gap-4 mb-6">
-<button id="exitMode" onclick="setMode('EXIT')" class="flex-1 py-3 bg-red-600 font-bold rounded-xl shadow-md transition border-2 border-white text-white">
-🏃 Check-OUT (Exit)
-</button>
-<button id="entryMode" onclick="setMode('ENTRY')" class="flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md transition border-2 border-transparent">
-🏡 Check-IN (Entry)
-</button>
-</div>
+        <!-- Mode Selectors -->
+        <div class="flex gap-4 mb-6">
+            <button id="outBtn" class="flex-1 bg-red-600 p-3 rounded-xl font-bold border-2 border-white">🏃 Check-OUT (Exit)</button>
+            <button id="inBtn" class="flex-1 bg-slate-700 p-3 rounded-xl font-bold border-2 border-transparent text-slate-400">🏡 Check-IN (Entry)</button>
+        </div>
 
-<div class="bg-slate-950 p-2 rounded-xl overflow-hidden mb-4 border border-slate-800">
-<div id="reader" class="w-full text-slate-400 text-xs"></div>
-</div>
+        <!-- Scanner Box Container -->
+        <div class="bg-slate-950 p-2 rounded-2xl border border-slate-700 overflow-hidden mb-6">
+            <div id="reader" class="w-full"></div>
+        </div>
 
-<div id="resultBox" class="hidden p-4 rounded-xl text-center font-semibold text-sm transition-all duration-200"></div>
-</div>
+        <!-- Interactive Alert Bar -->
+        <div id="responseStatus" class="w-full bg-rose-600 text-white font-bold p-3 rounded-xl text-center text-sm tracking-wide">
+            System Operational - Scan QR Pass
+        </div>
+    </div>
 
-<script>
-// AAPKA GOOGLE WEB APP API ENDPOINT HERE
-const API_URL = "https://script.google.com/macros/s/AKfycbw3KtaHElQgBzfpvrjIRkDawkPmVFkKsX6Ji0eB6PZfOVsy1CY4j_7yImpccrW30K91/exec";
+    <script>
+    let currentDirection = "OUT";
+    const respBar = document.getElementById("responseStatus");
 
-let currentMode = 'EXIT';
-let html5QrcodeScanner = null;
+    document.getElementById("outBtn").addEventListener("click", () => {
+        currentDirection = "OUT";
+        document.getElementById("outBtn").className = "flex-1 bg-red-600 p-3 rounded-xl font-bold border-2 border-white";
+        document.getElementById("inBtn").className = "flex-1 bg-slate-700 p-3 rounded-xl font-bold border-2 border-transparent text-slate-400";
+    });
 
-function setMode(mode) {
-currentMode = mode;
-const exitBtn = document.getElementById('exitMode');
-const entryBtn = document.getElementById('entryMode');
+    document.getElementById("inBtn").addEventListener("click", () => {
+        currentDirection = "IN";
+        document.getElementById("inBtn").className = "flex-1 bg-emerald-600 p-3 rounded-xl font-bold border-2 border-white text-white";
+        document.getElementById("outBtn").className = "flex-1 bg-slate-700 p-3 rounded-xl font-bold border-2 border-transparent text-slate-400";
+    });
 
-if(mode === 'EXIT') {
-exitBtn.className = "flex-1 py-3 bg-red-600 font-bold rounded-xl shadow-md border-2 border-white text-white text-center";
-entryBtn.className = "flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md border-2 border-transparent text-center";
-} else {
-entryBtn.className = "flex-1 py-3 bg-emerald-600 font-bold rounded-xl shadow-md border-2 border-white text-white text-center";
-exitBtn.className = "flex-1 py-3 bg-slate-700 text-gray-400 font-bold rounded-xl shadow-md border-2 border-transparent text-center";
-}
-}
+    function onScanSuccess(decodedText, decodedResult) {
+        // Anti-Crash string handler to read plain roll strings smoothly
+        let targetRoll = decodedText.trim();
+        
+        respBar.className = "w-full bg-blue-600 text-white font-bold p-3 rounded-xl text-center text-sm";
+        respBar.innerText = "🔍 Processing Roll: " + targetRoll;
 
-function onScanSuccess(decodedText, decodedResult) {
-// Haptic Feedback (Vibrate mobile when successful)
-if (navigator.vibrate) navigator.vibrate(120);
+        const payload = {
+            action: "gateVerify",
+            rollNo: targetRoll,
+            direction: currentDirection
+        };
 
-const resultBox = document.getElementById('resultBox');
-resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-yellow-500 text-slate-900 block mb-2";
-resultBox.innerText = "Processing Cloud Sync Engine...";
+        fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            respBar.className = "w-full bg-emerald-600 text-white font-bold p-3 rounded-xl text-center text-sm";
+            respBar.innerText = "✓ PASS LOGGED SUCCESSFULLY FOR: " + targetRoll;
+        })
+        .catch(err => {
+            console.error(err);
+            respBar.className = "w-full bg-rose-600 text-white font-bold p-3 rounded-xl text-center text-sm";
+            respBar.innerText = "Network Engine Error!";
+        });
+    }
 
-// Pause scanning while request is in progress to avoid double entries
-html5QrcodeScanner.clear().then(() => {
-const payload = {
-action: "gateVerify",
-qrText: decodedText,
-type: currentMode
-};
-
-// Fire AJAX data pipeline to Google Cloud
-fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
-method: "POST",
-body: JSON.stringify(payload)
-})
-// Live payload format for Google Sheet Apps Script
-            const payload = {
-                action: "gateVerify",
-                rollNo: decodedText,
-                direction: "OUT"
-            };
-
-            const resultBox = document.getElementById("statusMessage") || document.querySelector('.bg-rose-600') || document.querySelector('button+div') || { className: "", innerText: "" };
-
-            // Fixed Fetch connection with no-cors mode to bypass network engine freeze
-            fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify(payload)
-            })
-            .then(() => {
-                // UI update on successful scan logging
-                const alertBtn = document.querySelector('button.bg-red-600') || document.querySelector('.bg-rose-600') || document.body.lastElementChild.querySelector('button');
-                if(alertBtn) {
-                    alertBtn.className = "w-full bg-emerald-600 text-white font-semibold p-3 rounded-xl text-center block font-bold text-sm";
-                    alertBtn.innerText = "✓ PASS VERIFIED & LOGGED SUCCESFULLY!";
-                } else {
-                    alert("✓ Gate Pass Logged for Roll: " + decodedText);
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                const alertBtn = document.querySelector('button.bg-red-600') || document.querySelector('.bg-rose-600');
-                if(alertBtn) {
-                    alertBtn.innerText = "Network Engine Error!";
-                }
-            })
-            .finally(() => {
-                // Auto restart scanner after 3 seconds
-                setTimeout(() => {
-                    if(typeof startScanner === "function") startScanner();
-                }, 3000);
-            });
+    const html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 15, qrbox: { width: 250, height: 250 } });
+    html5QrcodeScanner.render(onScanSuccess);
+    </script>
 </body>
 </html>
