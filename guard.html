@@ -13,18 +13,15 @@
         <h1 class="text-2xl font-bold text-emerald-400 mb-1">SmartGate Guard Panel</h1>
         <p class="text-sm text-slate-400 mb-6">Main Gate QR Entry/Exit Scanner</p>
 
-        <!-- Mode Selectors -->
         <div class="flex gap-4 mb-6">
             <button id="outBtn" class="flex-1 bg-red-600 p-3 rounded-xl font-bold border-2 border-white">🏃 Check-OUT (Exit)</button>
             <button id="inBtn" class="flex-1 bg-slate-700 p-3 rounded-xl font-bold border-2 border-transparent text-slate-400">🏡 Check-IN (Entry)</button>
         </div>
 
-        <!-- Scanner Box Container -->
         <div class="bg-slate-950 p-2 rounded-2xl border border-slate-700 overflow-hidden mb-6">
             <div id="reader" class="w-full"></div>
         </div>
 
-        <!-- Interactive Alert Bar -->
         <div id="responseStatus" class="w-full bg-rose-600 text-white font-bold p-3 rounded-xl text-center text-sm tracking-wide">
             System Operational - Scan QR Pass
         </div>
@@ -47,7 +44,6 @@
     });
 
     function onScanSuccess(decodedText, decodedResult) {
-        // Anti-Crash string handler to read plain roll strings smoothly
         let targetRoll = decodedText.trim();
         
         respBar.className = "w-full bg-blue-600 text-white font-bold p-3 rounded-xl text-center text-sm";
@@ -59,7 +55,8 @@
             direction: currentDirection
         };
 
-        fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
+        // Binit's New Live URL Integrated
+        fetch("https://script.google.com/macros/s/AKfycbzfRoUQnjczfiREph3w0M1M33AGYggz5YljIz-Og5pLQ1Zr_QS_foo9OX9FWfyGdNmb/exec", {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
