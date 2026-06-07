@@ -13,7 +13,6 @@
         <h1 class="text-2xl font-bold text-center text-blue-600 mb-1">SmartGate Portal</h1>
         <p class="text-sm text-center text-slate-500 mb-6">Digital Out-Pass Request Form</p>
 
-        <!-- Form Stage -->
         <div id="formStage">
             <div class="mb-4">
                 <label class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
@@ -39,7 +38,6 @@
             </button>
         </div>
 
-        <!-- QR Display Stage -->
         <div id="qrStage" class="hidden text-center">
             <div class="flex justify-center my-6">
                 <div id="qrcode" class="p-3 bg-white border border-slate-300 rounded-xl"></div>
@@ -76,18 +74,17 @@
             purpose: purpose
         };
 
-        // Form Submit to Sheet Core Pipeline
-        fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
+        // Binit's New Live URL Integrated
+        fetch("https://script.google.com/macros/s/AKfycbzfRoUQnjczfiREph3w0M1M33AGYggz5YljIz-Og5pLQ1Zr_QS_foo9OX9FWfyGdNmb/exec", {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         })
         .then(() => {
-            // Success Logic: Triggers instantly bypassing CORS freeze
             document.getElementById("qrcode").innerHTML = ""; 
             new QRCode(document.getElementById("qrcode"), {
-                text: roll, // Guard Panel direct roll string scan karega
+                text: roll, 
                 width: 180,
                 height: 180
             });
