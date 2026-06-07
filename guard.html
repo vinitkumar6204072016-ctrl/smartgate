@@ -63,19 +63,19 @@ resultBox.innerText = "Processing Cloud Sync Engine...";
 // Pause scanning while request is in progress to avoid double entries
 html5QrcodeScanner.clear().then(() => {
 const payload = {
-action: "scanPass",
+action: "gateVerify",
 qrText: decodedText,
 type: currentMode
 };
 
 // Fire AJAX data pipeline to Google Cloud
-fetch(API_URL, {
+fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
 method: "POST",
 body: JSON.stringify(payload)
 })
 .then(res => res.json())
 .then(data => {
-if(data.success) {
+if(data.status === "APPROVED") {
 resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-emerald-500 text-white block mb-2 animate-bounce";
 } else {
 resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-rose-600 text-white block mb-2";
