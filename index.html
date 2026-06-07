@@ -3,49 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartGate Portal</title>
+    <title>SmartGate Portal | Enterprise Management</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen flex items-center justify-center p-4 md:p-8 font-sans">
 
-    <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md border border-slate-200">
-        <h1 class="text-2xl font-bold text-center text-blue-600 mb-1">SmartGate Portal</h1>
-        <p class="text-sm text-center text-slate-500 mb-6">Digital Out-Pass Request Form</p>
-
-        <div id="formStage">
-            <div class="mb-4">
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
-                <input type="text" id="studentName" placeholder="Enter Full Name" class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <!-- Desktop Container (Bigger & Responsive) -->
+    <div class="bg-slate-900/60 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-5xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 overflow-hidden min-h-[600px]">
+        
+        <!-- Left Banner Side (Only visible on Desktop/Tablets for Attractiveness) -->
+        <div class="hidden md:flex md:col-span-5 bg-gradient-to-b from-indigo-600 to-purple-800 p-8 flex-col justify-between relative overflow-hidden">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-20 -right-10 w-60 h-60 bg-indigo-900/40 rounded-full blur-3xl"></div>
+            
+            <!-- Dynamic Logo Branding -->
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-indigo-700 p-3 rounded-2xl shadow-lg flex items-center justify-center w-12 h-12">
+                    <i class="fa-solid fa-shield-halved text-2xl animate-pulse"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black text-white tracking-wider block">SMART<span class="text-indigo-200 font-light">GATE</span></span>
+                    <span class="text-[10px] text-indigo-200 tracking-widest uppercase block -mt-1">Secure Digital ERP</span>
+                </div>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Roll Number</label>
-                <input type="text" id="rollNumber" placeholder="Enter Roll Number" class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <div class="my-auto space-y-4">
+                <h2 class="text-3xl font-extrabold text-white leading-tight">Automated Campus Clearance Engine</h2>
+                <p class="text-indigo-100 text-sm leading-relaxed">Instantly request automated digital passes, generate encrypted logs, and pass security checkpoints with dynamic QR authentication.</p>
             </div>
 
-            <div class="mb-6">
-                <label class="block text-sm font-semibold text-slate-700 mb-1">Purpose of Visit</label>
-                <select id="purpose" class="w-full p-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-                    <option value="Market / Local Outing">Market / Local Outing</option>
-                    <option value="Going Home">Going Home</option>
-                    <option value="Medical Emergency">Medical Emergency</option>
-                </select>
+            <div class="text-xs text-indigo-200/60 flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400"></i> Powered by Cloud App Pipeline v2.0
             </div>
-
-            <button type="button" id="submitBtn" onclick="generatePass()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-xl transition duration-200 cursor-pointer text-center">
-                Generate Digital Pass
-            </button>
         </div>
 
-        <div id="qrStage" class="hidden text-center">
-            <div class="flex justify-center my-6">
-                <div id="qrcode" class="p-3 bg-white border border-slate-300 rounded-xl"></div>
+        <!-- Right Working Form Side (Big and Spacious) -->
+        <div class="col-span-12 md:col-span-7 p-6 md:p-12 flex flex-col justify-center bg-slate-900 text-slate-100">
+            
+            <!-- Mobile Logo Header (Hidden on Desktop) -->
+            <div class="flex md:hidden items-center justify-center gap-3 mb-6">
+                <div class="bg-indigo-600 text-white p-2 rounded-xl shadow-md">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <h1 class="text-xl font-black tracking-wider text-white">SMARTGATE</h1>
             </div>
-            <p class="text-sm text-emerald-600 font-bold mb-4">✓ Pass Logged & QR Generated Successfully!</p>
-            <button type="button" onclick="resetForm()" class="w-full bg-slate-600 hover:bg-slate-700 text-white font-semibold p-3 rounded-xl transition duration-200 cursor-pointer">
-                New Request
-            </button>
+
+            <!-- Form Stage -->
+            <div id="formStage" class="space-y-6">
+                <div class="border-b border-slate-800 pb-3">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-id-card text-indigo-500 text-xl"></i> Out-Pass Request</h2>
+                    <p class="text-slate-400 text-xs mt-1">Please fill the student database credentials accurately.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-user"></i></span>
+                            <input type="text" id="studentName" placeholder="Enter Full Name" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Roll Number</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-graduation-cap"></i></span>
+                            <input type="text" id="rollNumber" placeholder="Enter Roll Number" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Purpose of Visit</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-route"></i></span>
+                            <select id="purpose" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition bg-slate-950">
+                                <option value="Market / Local Outing">Market / Local Outing</option>
+                                <option value="Going Home">Going Home</option>
+                                <option value="Medical Emergency">Medical Emergency</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="submitBtn" onclick="generatePass()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold p-4 rounded-xl shadow-lg shadow-indigo-950 transition duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-qrcode"></i> Generate Digital Pass
+                </button>
+            </div>
+
+            <!-- QR Display Stage -->
+            <div id="qrStage" class="hidden text-center space-y-6">
+                <div class="border-b border-slate-800 pb-3">
+                    <h2 class="text-2xl font-bold text-emerald-400 flex items-center justify-center gap-2"><i class="fa-solid fa-circle-check"></i> Authorization Granted</h2>
+                    <p class="text-slate-400 text-xs mt-1">Show this encrypted QR block to the security guard scanner.</p>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="p-4 bg-white rounded-2xl shadow-2xl border-4 border-indigo-500/20 max-w-[220px]">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-emerald-400 font-medium tracking-wide bg-emerald-950/40 py-2 px-4 rounded-xl border border-emerald-900/50 inline-block">✓ Cloud Database Record Synchronized</p>
+                
+                <button type="button" onclick="resetForm()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold p-3 rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-plus"></i> Create New Request
+                </button>
+            </div>
+
         </div>
     </div>
 
@@ -61,7 +127,7 @@
             return;
         }
 
-        submitBtn.innerText = "Processing...";
+        submitBtn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Encrypting Logs...";
         submitBtn.disabled = true;
 
         const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
@@ -74,8 +140,7 @@
             purpose: purpose
         };
 
-        // Updated with your latest Web App Link
-        fetch("https://script.google.com/macros/s/AKfycbw6Vms56dcwJilwBgrHPMnFXp7mwfHzIxSBDmUJXhx-1TRx4VipGZMcC2SMqftQkgE3UA/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
             method: "POST",
             mode: "no-cors",
             headers: { "Content-Type": "application/json" },
@@ -96,7 +161,7 @@
             alert("Error connecting to server!");
         })
         .finally(() => {
-            submitBtn.innerText = "Generate Digital Pass";
+            submitBtn.innerHTML = "<i class='fa-solid fa-qrcode'></i> Generate Digital Pass";
             submitBtn.disabled = false;
         });
     }
