@@ -94,25 +94,25 @@ purpose: purpose
 
 // Connecting live with Google Sheet Backend
 fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
-method: "POST",
-body: JSON.stringify(payload)
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify(payload)
 })
-.then(res => res.json())
-.then(data => {
-if(data.success) {
-document.getElementById("qrcode").innerHTML = ""; // Clear old QR
-new QRCode(document.getElementById("qrcode"), {
-text: data.qrData,
-width: 180,
-height: 180
+.then(() => {
+    // Data sheet me chala jayega, ab direct UI par QR code show karte hain
+    document.getElementById("qrcode").innerHTML = ""; 
+    new QRCode(document.getElementById("qrcode"), {
+        text: JSON.stringify(payload),
+        width: 180,
+        height: 180
+    });
+    document.getElementById("formStage").classList.add("hidden");
+    document.getElementById("qrStage").classList.remove("hidden");
+})
+.catch(err => {
+    console.error(err);
+    alert("Network Error! Checking cloud server connection...");
 });
-
-document.getElementById("formStage").classList.add("hidden");
-document.getElementById("qrStage").classList.remove("hidden");
-} else {
-alert("System Error: " + data.message);
-}
-})
 .catch(err => {
 console.error(err);
 alert("Network Error! Checking cloud server connection...");
