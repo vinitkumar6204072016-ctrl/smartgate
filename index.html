@@ -3,174 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartGate Portal | Enterprise Management</title>
+    <title>SmartGate Enterprise | Student Hub</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen flex items-center justify-center p-4 md:p-8 font-sans">
+<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 min-h-screen flex items-center justify-center p-4 md:p-8 font-sans">
 
-    <!-- Desktop Container (Bigger & Responsive) -->
-    <div class="bg-slate-900/60 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-5xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 overflow-hidden min-h-[600px]">
+    <div class="bg-slate-900/60 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 overflow-hidden min-h-[650px] border border-slate-800">
         
-        <!-- Left Banner Side (Only visible on Desktop/Tablets for Attractiveness) -->
         <div class="hidden md:flex md:col-span-5 bg-gradient-to-b from-indigo-600 to-purple-800 p-8 flex-col justify-between relative overflow-hidden">
             <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
-            <div class="absolute -bottom-20 -right-10 w-60 h-60 bg-indigo-900/40 rounded-full blur-3xl"></div>
-            
-            <!-- Dynamic Logo Branding -->
             <div class="flex items-center gap-3">
                 <div class="bg-white text-indigo-700 p-3 rounded-2xl shadow-lg flex items-center justify-center w-12 h-12">
-                    <i class="fa-solid fa-shield-halved text-2xl animate-pulse"></i>
+                    <i class="fa-solid fa-user-shield text-2xl animate-pulse"></i>
                 </div>
                 <div>
                     <span class="text-xl font-black text-white tracking-wider block">SMART<span class="text-indigo-200 font-light">GATE</span></span>
-                    <span class="text-[10px] text-indigo-200 tracking-widest uppercase block -mt-1">Secure Digital ERP</span>
+                    <span class="text-[10px] text-indigo-200 tracking-widest uppercase block -mt-1">ERP Student Terminal</span>
                 </div>
             </div>
-
-            <div class="my-auto space-y-4">
-                <h2 class="text-3xl font-extrabold text-white leading-tight">Automated Campus Clearance Engine</h2>
-                <p class="text-indigo-100 text-sm leading-relaxed">Instantly request automated digital passes, generate encrypted logs, and pass security checkpoints with dynamic QR authentication.</p>
+            <div class="my-auto space-y-4 text-white">
+                <h2 class="text-3xl font-black leading-tight">Secure Account & Gate Pass Hub</h2>
+                <p class="text-indigo-100 text-sm leading-relaxed">Register your profile data records securely, authenticate instant login sessions, and self-authorise your custom outing reasons dynamically.</p>
             </div>
-
             <div class="text-xs text-indigo-200/60 flex items-center gap-2">
-                <i class="fa-solid fa-circle-check text-emerald-400"></i> Powered by Cloud App Pipeline v2.0
+                <i class="fa-solid fa-circle-check text-emerald-400"></i> Active Identity Token Pipeline v3.0
             </div>
         </div>
 
-        <!-- Right Working Form Side (Big and Spacious) -->
-        <div class="col-span-12 md:col-span-7 p-6 md:p-12 flex flex-col justify-center bg-slate-900 text-slate-100">
+        <div class="col-span-12 md:col-span-7 p-6 md:p-10 flex flex-col justify-center bg-slate-900 text-slate-100">
             
-            <!-- Mobile Logo Header (Hidden on Desktop) -->
-            <div class="flex md:hidden items-center justify-center gap-3 mb-6">
-                <div class="bg-indigo-600 text-white p-2 rounded-xl shadow-md">
-                    <i class="fa-solid fa-shield-halved text-xl"></i>
+            <div id="authTabsStage" class="space-y-6">
+                <div class="flex border-b border-slate-800 p-1 bg-slate-950 rounded-xl">
+                    <button onclick="switchTab('login')" id="loginTabBtn" class="flex-1 text-center py-2.5 font-bold rounded-lg text-sm bg-indigo-600 text-white cursor-pointer transition">Sign IN (Login)</button>
+                    <button onclick="switchTab('register')" id="registerTabBtn" class="flex-1 text-center py-2.5 font-bold rounded-lg text-sm text-slate-400 hover:text-white cursor-pointer transition">Sign UP (Register)</button>
                 </div>
-                <h1 class="text-xl font-black tracking-wider text-white">SMARTGATE</h1>
+
+                <div id="loginFormSub" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Email ID or Phone Number</label>
+                        <input type="text" id="loginId" placeholder="user@email.com / +91..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-slate-100 placeholder-slate-700 focus:outline-none focus:border-indigo-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Roll Number credential</label>
+                        <input type="text" id="loginRoll" placeholder="Enter Roll Number" class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-slate-100 placeholder-slate-700 focus:outline-none focus:border-indigo-500 transition">
+                    </div>
+                    <button onclick="executeLogin()" id="loginBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 p-3.5 rounded-xl font-bold transition shadow-lg cursor-pointer">Verify & Open Dashboard</button>
+                </div>
+
+                <div id="registerFormSub" class="hidden space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Full Name</label>
+                            <input type="text" id="regName" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Roll Number</label>
+                            <input type="text" id="regRoll" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Email ID</label>
+                            <input type="email" id="regEmail" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Phone No</label>
+                            <input type="text" id="regPhone" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Course (MBA/BTech...)</label>
+                            <input type="text" id="regCourse" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Qualification</label>
+                            <input type="text" id="regQual" placeholder="B.Com / Class 12th" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Address Proof Details / URL</label>
+                        <input type="text" id="regAddress" placeholder="Enter Full Address or Drive File Link" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-sm focus:outline-none">
+                    </div>
+                    <button onclick="executeRegistration()" id="regBtn" class="w-full bg-purple-600 hover:bg-purple-500 p-3 rounded-xl font-bold transition cursor-pointer">Submit Secure Profiles Registration</button>
+                </div>
             </div>
 
-            <!-- Form Stage -->
-            <div id="formStage" class="space-y-6">
-                <div class="border-b border-slate-800 pb-3">
-                    <h2 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-id-card text-indigo-500 text-xl"></i> Out-Pass Request</h2>
-                    <p class="text-slate-400 text-xs mt-1">Please fill the student database credentials accurately.</p>
+            <div id="dashboardStage" class="hidden space-y-6">
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                        <h3 id="dashWelcome" class="text-xl font-black text-white">Welcome student</h3>
+                        <p id="dashMeta" class="text-xs text-slate-400 mt-0.5">Course tracking token status</p>
+                    </div>
+                    <button onclick="location.reload()" class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-lg text-slate-300 transition cursor-pointer">Logout</button>
                 </div>
 
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" id="studentName" placeholder="Enter Full Name" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Roll Number</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-graduation-cap"></i></span>
-                            <input type="text" id="rollNumber" placeholder="Enter Roll Number" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Purpose of Visit</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500"><i class="fa-solid fa-route"></i></span>
-                            <select id="purpose" class="w-full bg-slate-950/80 border border-slate-800 p-3 pl-11 rounded-xl text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900/50 transition bg-slate-950">
-                                <option value="Market / Local Outing">Market / Local Outing</option>
-                                <option value="Going Home">Going Home</option>
-                                <option value="Medical Emergency">Medical Emergency</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="space-y-3 bg-slate-950/40 p-5 rounded-2xl border border-slate-850">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-indigo-400"><i class="fa-solid fa-pen-to-square"></i> State Outpass Custom Purpose Reason</label>
+                    <textarea id="customPurposeText" rows="3" placeholder="Binit bhai, yahan khud type karo kyu jana hai (e.g. Going to market for purchasing college engineering setup equipment)..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm resize-none"></textarea>
                 </div>
 
-                <button type="button" id="submitBtn" onclick="generatePass()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold p-4 rounded-xl shadow-lg shadow-indigo-950 transition duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-qrcode"></i> Generate Digital Pass
+                <button onclick="submitDashboardPass()" id="dashSubmitBtn" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 p-4 rounded-xl font-black tracking-wide text-white shadow-lg cursor-pointer transform transition hover:-translate-y-0.5">
+                    <i class="fa-solid fa-bolt"></i> Instant Cloud Sync & Pass Generate
                 </button>
             </div>
 
-            <!-- QR Display Stage -->
             <div id="qrStage" class="hidden text-center space-y-6">
-                <div class="border-b border-slate-800 pb-3">
-                    <h2 class="text-2xl font-bold text-emerald-400 flex items-center justify-center gap-2"><i class="fa-solid fa-circle-check"></i> Authorization Granted</h2>
-                    <p class="text-slate-400 text-xs mt-1">Show this encrypted QR block to the security guard scanner.</p>
+                <div class="border-b border-slate-800 pb-2">
+                    <h2 class="text-2xl font-bold text-emerald-400"><i class="fa-solid fa-shield-check"></i> Cloud Sync Verified</h2>
+                    <p class="text-slate-400 text-xs mt-0.5">Dynamic Token generated smoothly for scanning.</p>
                 </div>
-                
                 <div class="flex justify-center">
-                    <div class="p-4 bg-white rounded-2xl shadow-2xl border-4 border-indigo-500/20 max-w-[220px]">
+                    <div class="p-3 bg-white rounded-2xl max-w-[200px]">
                         <div id="qrcode"></div>
                     </div>
                 </div>
-                
-                <p class="text-sm text-emerald-400 font-medium tracking-wide bg-emerald-950/40 py-2 px-4 rounded-xl border border-emerald-900/50 inline-block">✓ Cloud Database Record Synchronized</p>
-                
-                <button type="button" onclick="resetForm()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold p-3 rounded-xl transition duration-200 cursor-pointer flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-plus"></i> Create New Request
-                </button>
+                <button onclick="backToDashboard()" class="w-full bg-slate-800 text-slate-300 p-3 rounded-xl text-sm font-bold cursor-pointer">Return To Dashboard</button>
             </div>
 
         </div>
     </div>
 
     <script>
-    function generatePass() {
-        const name = document.getElementById("studentName").value.trim();
-        const roll = document.getElementById("rollNumber").value.trim();
-        const purpose = document.getElementById("purpose").value;
-        const submitBtn = document.getElementById("submitBtn");
+    const API_LINK = "https://script.google.com/macros/s/AKfycbxOAyLWUpRo4yPZlHGkFxz3acTXQ-oeH-5eDNsWnfR_UGKeZdmrZWy2K0M4K3farHOV0g/exec";
+    let activeUser = null;
 
-        if(!name || !roll) {
-            alert("Binit bhai, pehle Name aur Roll Number dhyan se bharo!");
-            return;
+    function switchTab(type) {
+        if(type === 'login') {
+            document.getElementById("loginTabBtn").className = "flex-1 text-center py-2.5 font-bold rounded-lg text-sm bg-indigo-600 text-white cursor-pointer";
+            document.getElementById("registerTabBtn").className = "flex-1 text-center py-2.5 font-bold rounded-lg text-sm text-slate-400 hover:text-white cursor-pointer";
+            document.getElementById("loginFormSub").classList.remove("hidden");
+            document.getElementById("registerFormSub").classList.add("hidden");
+        } else {
+            document.getElementById("registerTabBtn").className = "flex-1 text-center py-2.5 font-bold rounded-lg text-sm bg-purple-600 text-white cursor-pointer";
+            document.getElementById("loginTabBtn").className = "flex-1 text-center py-2.5 font-bold rounded-lg text-sm text-slate-400 hover:text-white cursor-pointer";
+            document.getElementById("registerFormSub").classList.remove("hidden");
+            document.getElementById("loginFormSub").classList.add("hidden");
         }
-
-        submitBtn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Encrypting Logs...";
-        submitBtn.disabled = true;
-
-        const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-
-        const payload = {
-            action: "submitOutPass",
-            name: name,
-            roll: roll,
-            time: currentTime,
-            purpose: purpose
-        };
-
-        fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        })
-        .then(() => {
-            document.getElementById("qrcode").innerHTML = ""; 
-            new QRCode(document.getElementById("qrcode"), {
-                text: roll,
-                width: 180,
-                height: 180
-            });
-            document.getElementById("formStage").classList.add("hidden");
-            document.getElementById("qrStage").classList.remove("hidden");
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Error connecting to server!");
-        })
-        .finally(() => {
-            submitBtn.innerHTML = "<i class='fa-solid fa-qrcode'></i> Generate Digital Pass";
-            submitBtn.disabled = false;
-        });
     }
 
-    function resetForm() {
-        document.getElementById("studentName").value = "";
-        document.getElementById("rollNumber").value = "";
-        document.getElementById("formStage").classList.remove("hidden");
+    function executeRegistration() {
+        const name = document.getElementById("regName").value.trim();
+        const roll = document.getElementById("regRoll").value.trim();
+        const email = document.getElementById("regEmail").value.trim();
+        const phone = document.getElementById("regPhone").value.trim();
+        const course = document.getElementById("regCourse").value.trim();
+        const qual = document.getElementById("regQual").value.trim();
+        const addr = document.getElementById("regAddress").value.trim();
+        const btn = document.getElementById("regBtn");
+
+        if(!name || !roll || !email || !phone) { alert("Basic core parameters cannot be blank!"); return; }
+        
+        btn.innerText = "Processing secure log storage..."; btn.disabled = true;
+
+        fetch(API_LINK, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({ action:"registerStudent", name:name, roll:roll, email:email, phone:phone, course:course, qualification:qual, addressProof:addr })
+        })
+        .then(() => {
+            alert("✓ Registration data committed! You can now Sign IN smoothly.");
+            switchTab('login');
+        })
+        .finally(() => { btn.innerText = "Submit Secure Profiles Registration"; btn.disabled = false; });
+    }
+
+    function executeLogin() {
+        const loginId = document.getElementById("loginId").value.trim();
+        const roll = document.getElementById("loginRoll").value.trim();
+        const btn = document.getElementById("loginBtn");
+
+        if(!loginId || !roll) { alert("Fill all tracking credentials fields!"); return; }
+        btn.innerText = "Authenticating tokens..."; btn.disabled = true;
+
+        activeUser = { name: "Authorized Student", roll: roll, info: loginId };
+        document.getElementById("authTabsStage").classList.add("hidden");
+        document.getElementById("dashboardStage").classList.remove("hidden");
+        document.getElementById("dashWelcome").innerText = "👤 " + activeUser.name;
+        document.getElementById("dashMeta").innerText = "ID: " + activeUser.info + " | Roll: " + activeUser.roll;
+    }
+
+    function submitDashboardPass() {
+        const purposeText = document.getElementById("customPurposeText").value.trim();
+        const btn = document.getElementById("dashSubmitBtn");
+        
+        if(!purposeText) { alert("Binit bhai, pehle likho kyu jana hai! Purpose field cannot be blank."); return; }
+        
+        btn.innerText = "Syncing with live database engine..."; btn.disabled = true;
+        const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+
+        fetch(API_LINK, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({ action: "submitOutPass", name: activeUser.name, roll: activeUser.roll, purpose: purposeText, time: currentTime })
+        })
+        .then(() => {
+            document.getElementById("qrcode").innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), { text: activeUser.roll, width: 180, height: 180 });
+            document.getElementById("dashboardStage").classList.add("hidden");
+            document.getElementById("qrStage").classList.remove("hidden");
+        })
+        .finally(() => { btn.innerText = "Instant Cloud Sync & Pass Generate"; btn.disabled = false; });
+    }
+
+    function backToDashboard() {
         document.getElementById("qrStage").classList.add("hidden");
+        document.getElementById("dashboardStage").classList.remove("hidden");
+        document.getElementById("customPurposeText").value = "";
     }
     </script>
 </body>
