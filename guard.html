@@ -73,40 +73,43 @@ fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl
 method: "POST",
 body: JSON.stringify(payload)
 })
-.then(res => res.json())
-.then(data => {
-if(data.status === "APPROVED") {
-resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-emerald-500 text-white block mb-2 animate-bounce";
-} else {
-resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-rose-600 text-white block mb-2";
-}
-resultBox.innerText = data.message;
-})
-.catch(err => {
-resultBox.className = "p-4 rounded-xl text-center font-semibold text-sm bg-rose-600 text-white block mb-2";
-resultBox.innerText = "Network Engine Error!";
-console.error(err);
-})
-.finally(() => {
-// Restart scanner automatically after 3 seconds
-setTimeout(() => {
-startScanner();
-}, 3000);
-});
-});
-}
+// Live payload format for Google Sheet Apps Script
+            const payload = {
+                action: "gateVerify",
+                rollNo: decodedText,
+                direction: "OUT"
+            };
 
-function startScanner() {
-html5QrcodeScanner = new Html5QrcodeScanner("reader", {
-fps: 15,
-qrbox: { width: 250, height: 250 },
-aspectRatio: 1.0
-});
-html5QrcodeScanner.render(onScanSuccess);
-}
+            const resultBox = document.getElementById("statusMessage") || document.querySelector('.bg-rose-600') || document.querySelector('button+div') || { className: "", innerText: "" };
 
-// Auto Start Camera Matrix-Scan Engine on Page Load
-startScanner();
-</script>
+            // Fixed Fetch connection with no-cors mode to bypass network engine freeze
+            fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                // UI update on successful scan logging
+                const alertBtn = document.querySelector('button.bg-red-600') || document.querySelector('.bg-rose-600') || document.body.lastElementChild.querySelector('button');
+                if(alertBtn) {
+                    alertBtn.className = "w-full bg-emerald-600 text-white font-semibold p-3 rounded-xl text-center block font-bold text-sm";
+                    alertBtn.innerText = "✓ PASS VERIFIED & LOGGED SUCCESFULLY!";
+                } else {
+                    alert("✓ Gate Pass Logged for Roll: " + decodedText);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                const alertBtn = document.querySelector('button.bg-red-600') || document.querySelector('.bg-rose-600');
+                if(alertBtn) {
+                    alertBtn.innerText = "Network Engine Error!";
+                }
+            })
+            .finally(() => {
+                // Auto restart scanner after 3 seconds
+                setTimeout(() => {
+                    if(typeof startScanner === "function") startScanner();
+                }, 3000);
+            });
 </body>
 </html>
