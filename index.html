@@ -69,66 +69,61 @@ Create New Pass
 const API_URL = "https://script.google.com/macros/s/AKfycbw3KtaHElQgBzfpvrjIRkDawkPmVFkKsX6Ji0eB6PZfOVsy1CY4j_7yImpccrW30K91/exec";
 
 function generatePass() {
-const name = document.getElementById("studentName").value.trim();
-const roll = document.getElementById("rollNumber").value.trim();
-const purpose = document.getElementById("purpose").value;
-const submitBtn = document.getElementById("submitBtn");
+    const name = document.getElementById("studentName").value.trim();
+    const roll = document.getElementById("rollNumber").value.trim();
+    const purpose = document.getElementById("purpose").value;
+    const submitBtn = document.getElementById("submitBtn");
 
-if(!name || !roll) {
-alert("Please fill in all fields!");
-return;
-}
+    if(!name || !roll) {
+        alert("Please fill in all fields!");
+        return;
+    }
 
-submitBtn.innerText = "Processing...";
-submitBtn.disabled = true;
+    submitBtn.innerText = "Processing...";
+    submitBtn.disabled = true;
 
-const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
 
-const payload = {
-action: "submitOutPass",
-name: name,
-roll: roll,
-time: currentTime,
-purpose: purpose
-};
+    const payload = {
+        action: "submitOutPass",
+        name: name,
+        roll: roll,
+        time: currentTime,
+        purpose: purpose
+    };
 
-// Connecting live with Google Sheet Backend
-fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify(payload)
-})
-.then(() => {
-    // Data sheet me chala jayega, ab direct UI par QR code show karte hain
-    document.getElementById("qrcode").innerHTML = ""; 
-    new QRCode(document.getElementById("qrcode"), {
-        text: JSON.stringify(payload),
-        width: 180,
-        height: 180
+    // Corrected fetch using no-cors mode to prevent network freeze
+    fetch("https://script.google.com/macros/s/AKfycbydkacJx2Y_n9KYdqp74ZI7j883gfQugl6XsfV1Ja4xzIr2Ije8-Yi-jO2W7cYYzxbKQw/exec", {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload)
+    })
+    .then(() => {
+        // Direct QR code generation execution
+        document.getElementById("qrcode").innerHTML = ""; 
+        new QRCode(document.getElementById("qrcode"), {
+            text: JSON.stringify(payload),
+            width: 180,
+            height: 180
+        });
+        document.getElementById("formStage").classList.add("hidden");
+        document.getElementById("qrStage").classList.remove("hidden");
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Network Error! Please check your script URL configuration.");
+    })
+    .finally(() => {
+        submitBtn.innerText = "Generate Digital Pass";
+        submitBtn.disabled = false;
     });
-    document.getElementById("formStage").classList.add("hidden");
-    document.getElementById("qrStage").classList.remove("hidden");
-})
-.catch(err => {
-    console.error(err);
-    alert("Network Error! Checking cloud server connection...");
-});
-.catch(err => {
-console.error(err);
-alert("Network Error! Checking cloud server connection...");
-})
-.finally(() => {
-submitBtn.innerText = "Generate Digital Pass";
-submitBtn.disabled = false;
-});
 }
 
 function resetForm() {
-document.getElementById("studentName").value = "";
-document.getElementById("rollNumber").value = "";
-document.getElementById("qrStage").classList.add("hidden");
-document.getElementById("formStage").classList.remove("hidden");
+    document.getElementById("studentName").value = "";
+    document.getElementById("rollNumber").value = "";
+    submitBtn.innerText = "Generate Digital Pass";
+    submitBtn.disabled = false;
 }
-</script>
 </body>
 </html>
