@@ -3,203 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartGate Enterprise Portal | Student Administration Node</title>
+    <title>SmartGate Enterprise | Cloud Infrastructure Portal</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gradient-to-tr from-slate-950 via-slate-900 to-indigo-950 min-h-screen flex items-center justify-center p-0 md:p-6 font-sans selection:bg-indigo-500 selection:text-white">
+<body class="bg-gradient-to-tr from-slate-950 via-slate-900 to-indigo-950 min-h-screen flex items-center justify-center p-0 md:p-6 font-sans">
 
-    <div class="bg-slate-900/40 backdrop-blur-2xl w-full min-h-screen md:min-h-[750px] md:max-w-7xl md:rounded-3xl border border-slate-800/80 shadow-2xl grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+    <div class="bg-slate-900/40 backdrop-blur-2xl w-full min-h-screen md:min-h-[750px] md:max-w-7xl md:rounded-3xl border border-slate-800 shadow-2xl grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         
         <div class="hidden lg:flex lg:col-span-4 bg-gradient-to-br from-indigo-600 via-indigo-800 to-purple-900 p-10 flex-col justify-between relative">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent)]"></div>
-            
             <div class="flex items-center gap-4 relative z-10">
-                <div class="bg-white text-indigo-700 p-3.5 rounded-2xl shadow-2xl flex items-center justify-center w-14 h-14 border border-indigo-100">
-                    <i class="fa-solid fa-hotel text-2xl animate-pulse"></i>
+                <div class="bg-white text-indigo-700 p-3.5 rounded-2xl shadow-2xl flex items-center justify-center w-14 h-14">
+                    <i class="fa-solid fa-server text-2xl"></i>
                 </div>
                 <div>
                     <span class="text-2xl font-black text-white tracking-wider block">SMART<span class="text-indigo-200 font-light">GATE</span></span>
                     <span class="text-[11px] text-indigo-200/80 tracking-widest uppercase font-bold block">Enterprise ERP Matrix</span>
                 </div>
             </div>
-
             <div class="space-y-6 relative z-10 my-auto pr-4">
-                <h2 class="text-4xl font-black text-white leading-tight">Automated Institutional Profile Gateways.</h2>
-                <p class="text-indigo-100/90 text-sm leading-relaxed font-medium">An agile enterprise structure validating data integrity clusters via 6-digit cryptographic handshake protocols. Self-authorise your outpass tracking layers with persistent server synchronization.</p>
+                <h2 class="text-4xl font-black text-white leading-tight">Automated Multi-Stage Student Registry.</h2>
+                <p class="text-indigo-100/90 text-sm leading-relaxed font-medium">An agile secure infrastructure network handling 6-digit verification codes arrays to validate database records and authenticate live out-passes dynamically.</p>
             </div>
-
             <div class="text-xs text-indigo-200/50 font-mono flex items-center gap-2 relative z-10">
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div> Production Server Connection Secured
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></div> Server Connection Secured
             </div>
         </div>
 
-        <div class="col-span-12 lg:col-span-8 p-6 sm:p-12 flex flex-col justify-center bg-slate-950/20 text-slate-200 relative">
+        <div class="col-span-12 lg:col-span-8 p-6 sm:p-12 flex flex-col justify-center bg-slate-950/40 text-slate-200 relative">
             
-            <div id="screenWelcome" class="w-full max-w-2xl mx-auto space-y-10 text-center py-6 animate-fade-in">
+            <div id="screenWelcome" class="w-full max-w-2xl mx-auto space-y-10 text-center py-6">
                 <div class="space-y-4">
-                    <div class="w-24 h-24 bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 text-indigo-400 border border-indigo-500/20 rounded-3xl mx-auto flex items-center justify-center text-5xl shadow-2xl relative">
+                    <div class="w-24 h-24 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-3xl mx-auto flex items-center justify-center text-5xl shadow-2xl">
                         <i class="fa-solid fa-building-shield"></i>
-                        <span class="absolute -top-1 -right-1 flex h-4 w-4"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-4 w-4 bg-indigo-500"></span></span>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none">SmartGate ERP Portal</h1>
-                    <p class="text-slate-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-medium">Centralized Cloud Engine for Secure Student Management & Real-Time Dynamic Outpass Clearance Auditing.</p>
+                    <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none">SmartGate ERP System</h1>
+                    <p class="text-slate-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-medium">Centralized dashboard node for automated student logging management. Choose an operation pipeline below to proceed.</p>
                 </div>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-lg mx-auto pt-4">
-                    <button onclick="navigateTo('screenSignUp')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold p-4.5 rounded-xl shadow-xl shadow-indigo-950/40 transition duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-user-plus text-base"></i> Create Server Account
+                    <button onclick="showScreen('screenSignUp')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold p-4.5 rounded-xl shadow-xl transition transform active:scale-95 cursor-pointer flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i> Create Account (Sign Up)
                     </button>
-                    <button onclick="navigateTo('screenSignIn')" class="bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-200 font-extrabold p-4.5 rounded-xl shadow-md transition duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-fingerprint text-base text-indigo-400"></i> Access Portal Logins
+                    <button onclick="showScreen('screenSignIn')" class="bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-200 font-extrabold p-4.5 rounded-xl shadow-md transition transform active:scale-95 cursor-pointer flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-fingerprint text-indigo-400"></i> Access Dashboard (Sign In)
                     </button>
                 </div>
             </div>
 
             <div id="screenSignUp" class="hidden w-full max-w-2xl mx-auto space-y-6">
-                <div class="border-b border-slate-800/80 pb-3 flex justify-between items-center">
-                    <div>
-                        <h3 class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-user-plus text-purple-500"></i> Registry Account Initiation</h3>
-                        <p class="text-xs text-slate-500 mt-1">Provide data fields variables to compile institutional database footprint records.</p>
-                    </div>
-                    <button onclick="navigateTo('screenWelcome')" class="text-xs font-bold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-2 rounded-xl transition cursor-pointer"><i class="fa-solid fa-angle-left"></i> Home</button>
+                <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-id-card text-purple-500"></i> Server Registry Registration</h3>
+                    <button onclick="showScreen('screenWelcome')" class="text-xs text-slate-400 bg-slate-900 p-2 border border-slate-800 rounded-lg">Back to Main</button>
                 </div>
-                
-                <div class="space-y-4 bg-slate-900/40 border border-slate-850 p-6 rounded-3xl shadow-2xl">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Full Legal Name</label>
-                            <input type="text" id="regName" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Roll Number ID / UID</label>
-                            <input type="text" id="regRoll" placeholder="e.g. 2026MBA01" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
+                <div class="space-y-4 bg-slate-900/50 border border-slate-850 p-6 rounded-3xl shadow-xl">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="regName" placeholder="Full Student Name" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
+                        <input type="text" id="regRoll" placeholder="Roll Number ID" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Academic Email Target</label>
-                            <input type="email" id="regEmail" placeholder="student@university.com" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Mobile Phone Contact Number</label>
-                            <input type="text" id="regPhone" placeholder="+91 XXXXX XXXXX" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="email" id="regEmail" placeholder="Academic Email ID" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
+                        <input type="text" id="regPhone" placeholder="Mobile Phone Number" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Course Stream Department</label>
-                            <input type="text" id="regCourse" placeholder="e.g. MBA International Business" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Prior Qualification</label>
-                            <input type="text" id="regQual" placeholder="e.g. B.Com / Undergraduate" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="regCourse" placeholder="Course Stream (e.g. MBA IB)" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
+                        <input type="text" id="regQual" placeholder="Prior Qualification (e.g. B.Com)" class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
                     </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Address Proof Details Link</label>
-                        <input type="text" id="regAddr" placeholder="Provide complete address string text or file attachment endpoint URL" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-900 transition">
-                    </div>
-                    
-                    <button onclick="dispatchSecurityHandshake()" id="signUpSubmitBtn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 py-4 rounded-xl font-black text-white tracking-widest uppercase text-sm shadow-xl cursor-pointer hover:from-purple-500 hover:to-indigo-500 transition duration-200 transform active:scale-98 mt-2 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Dispatch Dual Security Keys
-                    </button>
+                    <input type="text" id="regAddr" placeholder="Address Proof Details/Link Reference" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none focus:border-purple-500 text-white">
+                    <button onclick="sendOtp()" id="otpBtn" class="w-full bg-purple-600 hover:bg-purple-500 py-4 rounded-xl text-sm font-black uppercase tracking-wider text-white shadow-xl cursor-pointer">Dispatch Verification Key</button>
                 </div>
             </div>
 
-            <div id="screenOtpVerify" class="hidden w-full max-w-md mx-auto space-y-6 text-center animate-fade-in">
-                <div class="space-y-3">
-                    <div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full mx-auto flex items-center justify-center text-3xl shadow-xl">
-                        <i class="fa-solid fa-envelope-open-text animate-bounce"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-white">Cryptographic Verification</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed px-2 font-medium">6-Digit security token variable has been broadcast to your profile email parameters. Extract the code array to bind rows metadata.</p>
+            <div id="screenOtpVerify" class="hidden w-full max-w-md mx-auto space-y-6 text-center">
+                <div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full mx-auto flex items-center justify-center text-3xl shadow-xl">
+                    <i class="fa-solid fa-key-skeleton animate-bounce"></i>
                 </div>
-                
-                <div class="bg-slate-900/50 border border-slate-850 p-6 rounded-3xl shadow-2xl space-y-5">
-                    <div>
-                        <span class="block text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3">Input Active Verification Code</span>
-                        <input type="text" id="inputOtpCode" maxlength="6" placeholder="000000" class="w-full tracking-[16px] text-center bg-slate-950 border border-slate-800 p-4 rounded-xl text-2xl font-black text-emerald-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-900 placeholder:tracking-normal placeholder:text-slate-800">
-                    </div>
-                    <button onclick="executeSecureVerificationCommit()" id="finalRegVerifyBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 py-4 rounded-xl text-sm font-black uppercase tracking-widest text-white transition shadow-lg shadow-emerald-950/50 cursor-pointer flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-lock-open"></i> Authenticate & Lock Profile
-                    </button>
+                <h3 class="text-2xl font-bold text-white">Verify Security Passcode</h3>
+                <p class="text-xs text-slate-400">6-digit key was transmitted to your credentials email/phone. Enter below.</p>
+                <div class="bg-slate-900/50 border border-slate-850 p-6 rounded-3xl shadow-xl space-y-4">
+                    <input type="text" id="inputOtpCode" maxlength="6" placeholder="000000" class="w-full tracking-[12px] text-center bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-xl font-black text-emerald-400 focus:outline-none">
+                    <button onclick="verifyAndRegister()" id="verifyBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 py-4 rounded-xl font-bold text-white cursor-pointer">Verify Code & Create Profile</button>
                 </div>
             </div>
 
-            <div id="screenSignIn" class="hidden w-full max-w-xl mx-auto space-y-6 animate-fade-in">
-                <div class="border-b border-slate-800/80 pb-3 flex justify-between items-center">
-                    <div>
-                        <h3 class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-400"></i> Security Session Login</h3>
-                        <p class="text-xs text-slate-500 mt-1">Verify parameters identifiers to mount active session memory cookies.</p>
-                    </div>
-                    <button onclick="navigateTo('screenWelcome')" class="text-xs font-bold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-2 rounded-xl transition cursor-pointer"><i class="fa-solid fa-angle-left"></i> Home</button>
+            <div id="screenSignIn" class="hidden w-full max-w-xl mx-auto space-y-6">
+                <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-500"></i> Account Verification Gateway</h3>
+                    <button onclick="showScreen('screenWelcome')" class="text-xs text-slate-400 bg-slate-900 p-2 border border-slate-800 rounded-lg">Back</button>
                 </div>
-                
-                <div class="space-y-5 bg-slate-900/40 border border-slate-850 p-6 sm:p-8 rounded-3xl shadow-2xl">
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-slate-400 tracking-wider mb-2">Registered Email / Phone Coordinate</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-600"><i class="fa-solid fa-at"></i></span>
-                            <input type="text" id="logUser" placeholder="Enter user@email.com or phone number" class="w-full bg-slate-950 border border-slate-800 p-3.5 pl-11 rounded-xl text-sm text-slate-200 placeholder-slate-700 focus:outline-none focus:border-indigo-500 transition shadow-inner">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase text-slate-400 tracking-wider mb-2">Unique Roll Number Identifier Key</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-600"><i class="fa-solid fa-graduation-cap"></i></span>
-                            <input type="text" id="logRoll" placeholder="e.g. 2026MBA01" class="w-full bg-slate-950 border border-slate-800 p-3.5 pl-11 rounded-xl text-sm text-slate-200 placeholder-slate-700 focus:outline-none focus:border-indigo-500 transition shadow-inner">
-                        </div>
-                    </div>
-                    <button onclick="executePortalAuthentication()" id="loginSubmitBtn" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 py-4 rounded-xl text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-indigo-950/50 transition transform active:scale-98 cursor-pointer mt-2 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-right-to-bracket"></i> Mount Session Dashboard
-                    </button>
+                <div class="space-y-4 bg-slate-900/50 border border-slate-850 p-6 rounded-3xl shadow-xl">
+                    <input type="text" id="logUser" placeholder="Registered Email ID or Phone" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none text-white">
+                    <input type="text" id="logRoll" placeholder="Roll Number ID (e.g. MBA2026)" class="w-full bg-slate-950 border border-slate-800 p-3.5 rounded-xl text-sm focus:outline-none text-white">
+                    <button onclick="loginStudent()" id="loginBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 py-4 rounded-xl font-bold text-white tracking-wider cursor-pointer">Authenticate Login Session</button>
                 </div>
             </div>
 
-            <div id="screenDashboard" class="hidden w-full max-w-5xl mx-auto space-y-6 animate-fade-in">
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl"></div>
-                    <div class="flex items-center gap-4 relative z-10">
-                        <div class="w-14 h-14 rounded-2xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl shadow-inner">
-                            <i class="fa-solid fa-circle-user animate-pulse"></i>
-                        </div>
-                        <div>
-                            <h2 id="dashStudentName" class="text-2xl font-black text-white">Authenticated Session Terminal</h2>
-                            <p id="dashStudentMeta" class="text-xs text-slate-400 mt-0.5 tracking-wide uppercase font-semibold">Active Database Row Mapping Status</p>
-                        </div>
+            <div id="screenDashboard" class="hidden w-full max-w-5xl mx-auto space-y-6">
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-center gap-4 shadow-2xl relative">
+                    <div>
+                        <h2 id="dashStudentName" class="text-2xl font-black text-white">Welcome Student</h2>
+                        <p id="dashStudentMeta" class="text-xs text-slate-400 mt-1">Session Connected Securely to Cloud Platform</p>
                     </div>
-                    <button onclick="location.reload()" class="bg-rose-950/40 hover:bg-rose-900 border border-rose-900/50 text-rose-400 font-extrabold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer relative z-10 flex items-center gap-2"><i class="fa-solid fa-power-off"></i> Disconnect Session</button>
+                    <button onclick="location.reload()" class="bg-rose-950 text-rose-400 font-bold px-4 py-2.5 rounded-xl text-xs uppercase cursor-pointer"><i class="fa-solid fa-power-off"></i> Disconnect</button>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                    <div class="md:col-span-8 bg-slate-900/40 border border-slate-850 p-6 rounded-3xl space-y-5 shadow-xl">
-                        <div class="border-b border-slate-800 pb-2">
-                            <h4 class="text-sm font-black uppercase text-indigo-400 tracking-wider">State Dynamic Clearance Parameters</h4>
-                            <p class="text-[11px] text-slate-500 mt-0.5">Warden audit framework will parse the purpose text array parameter string directly.</p>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide">Write Custom Purpose / Reason For Exit Clearance:</label>
-                            <textarea id="customOutpassText" rows="4" placeholder="Binit bhai, yahan detail me likho kyu jana hai... (e.g. Leaving hostel campus to purchase project data components from market registry)" class="w-full bg-slate-950 border border-slate-800 p-4 rounded-2xl text-sm placeholder-slate-700 focus:outline-none focus:border-indigo-500 text-slate-200 shadow-inner resize-none leading-relaxed transition"></textarea>
-                        </div>
-                        <button onclick="executeOutpassGenerationRequest()" id="passSubmitBtn" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 py-4 rounded-xl text-sm font-black text-white tracking-widest uppercase shadow-xl hover:from-emerald-500 hover:to-teal-500 transition duration-200 transform active:scale-98 cursor-pointer flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> Commit Request & Generate Pass
-                        </button>
-                    </div>
-                    
-                    <div class="md:col-span-4 bg-slate-900/20 border border-slate-850 p-6 rounded-3xl flex flex-col justify-between shadow-xl">
-                        <div class="space-y-4">
-                            <span class="text-xs font-black uppercase text-slate-500 tracking-wider block">Security System Directives</span>
-                            <div class="space-y-3.5 text-xs text-slate-400 font-medium leading-relaxed">
-                                <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Custom typed text fields bypass hardcoded dropdown selection strings limitations.</p>
-                                <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Token locks directly onto server master data indexing arrays logs.</p>
-                            </div>
-                        </div>
-                        <div class="bg-slate-950 border border-slate-850 p-4 rounded-2xl mt-4 text-center shadow-inner">
-                            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest block mb-1">Terminal Secure Auth Code</span>
-                            <span class="text-base font-mono font-black text-indigo-400">NODE-ID-ERP3.9</span>
-                        </div>
-                    </div>
+                <div class="bg-slate-900/40 border border-slate-850 p-6 rounded-3xl space-y-5 shadow-xl">
+                    <label class="block text-xs font-bold text-indigo-400 uppercase tracking-wide">Write Custom Purpose / Reason Why You Want to Leave Campus:</label>
+                    <textarea id="customOutpassText" rows="4" placeholder="Binit bhai, yahan khud detail me type karo kyu jana hai (e.g. Going to Dehradun local library to fetch engineering core textbooks)..." class="w-full bg-slate-950 border border-slate-800 p-4 rounded-2xl text-sm focus:outline-none text-slate-200 resize-none leading-relaxed"></textarea>
+                    <button onclick="generateOutpass()" id="passSubmitBtn" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 py-4 rounded-xl text-sm font-black text-white tracking-widest uppercase cursor-pointer">Sync Request & Open QR-Pass</button>
                 </div>
             </div>
+
+            <div id="screenQrDisplay" class="hidden w-full max-w-md mx-auto text-center space-y-6 bg-slate-900/80 border border-slate-850 p-6 rounded-3xl shadow-2xl">
+                <h2 class="text-2xl font-black text-emerald-400"><i class="fa-solid fa-circle-check"></i> PIPELINE SYNCHRONIZED</h2>
+                <div class="flex justify-center my-4">
+                    <div class="p-4 bg-white rounded-3xl max-w-[240px]">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-850 py-2 px-4 rounded-xl inline-block text-xs font-mono text-emerald-400 font-bold">✓ CLOUD TRANSACTION SUCCESS</div>
+                <button onclick="showScreen('screenDashboard')" class="w-full bg-slate-800 text-slate-300 py-3 rounded-xl font-bold cursor-pointer">Return Workspace</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    // ⚠️ AUTOMATICALLY KEYED TO YOUR TAZA EXEC LINK
+    const SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbxoB-Jpe2POSMHxQTSmQ8SsV3Bo4pRpmcm6F13kSL0OZtUhGNOQjYdSfyJSLnX5RfiSqg/exec";
+    let activeSessionUser = null;
+
+    function showScreen(screenId)
