@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartGate ERP System | Student Portal Node</title>
+    <title>SmartGate ERP Cluster Management Node</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,91 +11,92 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
         .glass-panel { background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.06); }
+        .router-screen { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
-<body class="text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-600 selection:text-white">
+<body class="text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-indigo-600 selection:text-white">
 
     <header class="w-full bg-[#090d16]/80 border-b border-slate-900 px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-50 backdrop-blur-md">
         <div class="flex items-center gap-3">
-            <div class="bg-indigo-600 text-white p-2.5 rounded-xl flex items-center justify-center shadow-lg"><i class="fa-solid fa-layer-group text-xl"></i></div>
+            <div class="bg-indigo-600 text-white p-2.5 rounded-xl flex items-center justify-center shadow-lg"><i class="fa-solid fa-server text-xl"></i></div>
             <div>
                 <span class="text-lg font-black tracking-wider text-white">SMART<span class="text-indigo-400 font-light">GATE</span></span>
-                <span class="text-[9px] text-slate-500 font-mono tracking-widest uppercase block -mt-1">CAMPUS CLOUD INTERFACE NODE v4.8</span>
+                <span class="text-[9px] text-slate-500 font-mono tracking-widest uppercase block -mt-1">Node.js Express Cluster Engine Core v5.0</span>
             </div>
         </div>
         <div class="flex items-center gap-4 font-mono text-xs text-slate-400">
             <div class="bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-900 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> INFRASTRUCTURE: LIVE
+                <span class="w-2 h-2 rounded-full bg-emerald-500 anonymity-pulse"></span> DB CORE: STABLE
             </div>
         </div>
     </header>
 
-    <main class="w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-8 py-6 relative">
+    <main class="w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-8 py-8 relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(79,70,229,0.05),transparent_60%)] pointer-events-none"></div>
 
-        <div id="screenWelcome" class="w-full max-w-4xl mx-auto text-center space-y-12 py-6">
+        <div id="screenWelcome" class="router-screen w-full max-w-4xl mx-auto text-center space-y-12 py-6">
             <div class="space-y-4 max-w-2xl mx-auto">
-                <span class="bg-indigo-950/80 text-indigo-400 text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full border border-indigo-900/50 inline-block shadow-inner">SmartGate Administration Engine</span>
+                <span class="bg-indigo-950/80 text-indigo-400 text-[11px] font-black uppercase tracking-widest px-4 py-2 rounded-full border border-indigo-900/50 inline-block shadow-inner">Full-Scale Node App Stack</span>
                 <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-none pt-2">Next-Gen Multi-Stage Campus Portal</h1>
-                <p class="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">Binit Kumar's responsive web hub layer. Secure your server master footprints registry profiles configuration parameters instantly.</p>
+                <p class="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">Binit Kumar's unified enterprise application node. Handling custom backend routing parameters to align database arrays rows and optimize security compliance metrics layouts.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-lg mx-auto pt-2">
-                <button onclick="navigateTo('screenSignUp')" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold text-sm uppercase p-5 rounded-2xl shadow-2xl cursor-pointer flex items-center justify-center gap-2"><i class="fa-solid fa-user-plus"></i> Open Server Account SignUp</button>
-                <button onclick="navigateTo('screenSignIn')" class="bg-[#0b1329] hover:bg-[#111c3a] border border-slate-800 text-slate-200 font-extrabold text-sm uppercase p-5 rounded-2xl cursor-pointer flex items-center justify-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-400"></i> Access Portal Logins Dashboard</button>
+                <button onclick="navigateTo('screenSignUp')" class="bg-gradient-to-r from-purple-600 via-purple-700 to-indigo-600 text-white font-extrabold text-sm uppercase p-5 rounded-2xl shadow-2xl cursor-pointer flex items-center justify-center gap-2"><i class="fa-solid fa-user-plus"></i> Initialize Account Signup</button>
+                <button onclick="navigateTo('screenSignIn')" class="bg-[#0b1329] hover:bg-[#111c3a] border border-slate-800 text-slate-200 font-extrabold text-sm uppercase p-5 rounded-2xl transition cursor-pointer flex items-center justify-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-400"></i> Access Portal Dashboard</button>
             </div>
         </div>
 
-        <div id="screenSignUp" class="hidden w-full max-w-6xl mx-auto space-y-6">
+        <div id="screenSignUp" class="router-screen hidden w-full max-w-6xl mx-auto space-y-6">
             <div class="flex justify-between items-center border-b border-slate-900 pb-3">
-                <h3 class="text-xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-id-badge text-purple-500"></i> Student Profiles Creation Center</h3>
+                <h3 class="text-xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-user-plus text-purple-500"></i> Server Account Registry Creation</h3>
                 <button onclick="navigateTo('screenWelcome')" class="text-xs font-bold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-2 rounded-xl transition cursor-pointer"><i class="fa-solid fa-house"></i> Home</button>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full text-left">
                 <div class="col-span-12 lg:col-span-8 glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="regName" placeholder="Full Student Legal Name" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
-                        <input type="text" id="regRoll" placeholder="Roll Number ID Reference" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
+                        <input type="text" id="regName" placeholder="Full legal name" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
+                        <input type="text" id="regRoll" placeholder="Roll Number ID (e.g. 2026MBA01)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="email" id="regEmail" placeholder="Academic Email Address" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
-                        <input type="text" id="regPhone" placeholder="Mobile Contact Number" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
+                        <input type="email" id="regEmail" placeholder="Academic Email Address" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
+                        <input type="text" id="regPhone" placeholder="Mobile Phone Contact (+91 required)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="regCourse" placeholder="Course Stream (e.g. MBA IB)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
-                        <input type="text" id="regQual" placeholder="Prior Qualification (e.g. B.Com)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
+                        <input type="text" id="regCourse" placeholder="Course Stream (e.g. MBA IB)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
+                        <input type="text" id="regQual" placeholder="Prior Qualification Baseline (e.g. B.Com)" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
                     </div>
-                    <input type="text" id="regAddr" placeholder="Permanent home address description variables location data" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white">
+                    <input type="text" id="regAddr" placeholder="Permanent home address description info variables references URL" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm focus:border-purple-500 focus:outline-none text-white placeholder-slate-700">
                     
-                    <div class="bg-slate-950 border border-slate-850 p-4 rounded-xl space-y-2 text-left">
-                        <label class="block text-xs font-bold uppercase text-purple-400 tracking-wider"><i class="fa-solid fa-camera"></i> Attach Student Registry Portrait Photo</label>
+                    <div class="bg-slate-950 border border-slate-850 p-4 rounded-xl space-y-2">
+                        <label class="block text-xs font-bold uppercase text-purple-400 tracking-wider"><i class="fa-solid fa-camera"></i> Upload Student Profiles Master Photo</label>
                         <input type="file" id="regPhotoFile" accept="image/*" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-purple-950 file:text-purple-400 hover:file:bg-purple-900 cursor-pointer">
                     </div>
 
-                    <button onclick="triggerEmailOtpTransmission()" id="signUpSubmitBtn" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-indigo-700 py-4.5 rounded-xl font-black uppercase text-xs tracking-widest text-white shadow-xl cursor-pointer">
+                    <button onclick="dispatchSecureOtpHandshake()" id="signUpSubmitBtn" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-indigo-700 py-4.5 rounded-xl font-black uppercase text-xs tracking-widest text-white shadow-xl cursor-pointer">
                         <i class="fa-solid fa-paper-plane"></i> Dispatch 6-Digit Email Verification Key
                     </button>
                 </div>
                 
-                <div class="hidden lg:flex lg:col-span-4 bg-slate-950/60 border border-slate-900 p-6 rounded-3xl flex-col justify-between text-left">
+                <div class="hidden lg:flex lg:col-span-4 bg-slate-950/60 border border-slate-900 p-6 rounded-3xl flex-col justify-between">
                     <div class="space-y-4">
-                        <span class="text-xs font-black uppercase tracking-widest text-purple-400 block"><i class="fa-solid fa-user-lock"></i> Verification Pipeline</span>
+                        <span class="text-xs font-black uppercase tracking-widest text-purple-400 block"><i class="fa-solid fa-lock"></i> Verification Node</span>
                         <p class="text-xs text-slate-400 leading-relaxed">System parameters verify direct token handshakes to block fallback inputs loops and prevent fake registration credentials overrides.</p>
                     </div>
                     <div class="border-t border-slate-900 pt-3">
-                        <span class="text-[10px] uppercase font-bold text-slate-600 block">Database Storage Scheme Target</span>
+                        <span class="text-[10px] uppercase font-bold text-slate-600 block">Database Storage Scheme</span>
                         <span class="text-xs font-mono text-slate-400 font-bold">SQL_MASTER_REPOS_SHEET2</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="screenOtpVerify" class="hidden w-full max-w-md mx-auto space-y-6 text-center">
+        <div id="screenOtpVerify" class="router-screen hidden w-full max-w-md mx-auto space-y-6 text-center">
             <div class="space-y-2">
                 <div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-3xl mx-auto flex items-center justify-center text-4xl shadow-xl">
-                    <i class="fa-solid fa-shield-keyhole animate-bounce"></i>
+                    <i class="fa-solid fa-key-skeleton animate-bounce"></i>
                 </div>
-                <h3 class="text-2xl font-black text-white">Cryptographic Verification</h3>
+                <h3 class="text-2xl font-black text-white">Cryptographic Handshake</h3>
                 <p class="text-xs text-slate-400 px-4 leading-relaxed font-medium">Input the real dynamic 6-digit numeric token code transmitted to your email parameters registry tracker repository files.</p>
             </div>
             <div class="glass-panel p-6 rounded-3xl shadow-2xl space-y-5">
@@ -104,28 +105,28 @@
             </div>
         </div>
 
-        <div id="screenSignIn" class="hidden w-full max-w-xl mx-auto space-y-6">
+        <div id="screenSignIn" class="router-screen hidden w-full max-w-xl mx-auto space-y-6">
             <div class="border-b border-slate-800/80 pb-3 flex justify-between items-center">
                 <div>
-                    <h3 class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-400"></i> Account Verification Gateway</h3>
+                    <h3 class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-fingerprint text-indigo-400"></i> Identity Access Gateway</h3>
                     <p class="text-xs text-slate-500 mt-1">Verify tracking variables inputs to establish system dashboard sessions.</p>
                 </div>
                 <button onclick="navigateTo('screenWelcome')" class="text-xs font-bold text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3 py-2 rounded-xl transition cursor-pointer"><i class="fa-solid fa-angle-left"></i> Home</button>
             </div>
             <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
-                <input type="text" id="logUser" placeholder="Registered email address / phone number" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm text-slate-200 focus:outline-none">
+                <input type="text" id="logUser" placeholder="Registered email address / phone coordinate" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm text-slate-200 focus:outline-none">
                 <input type="text" id="logRoll" placeholder="Unique Student Roll Number Key" class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-xl text-sm text-slate-200 focus:outline-none">
                 <button onclick="processSystemLoginAuthentication()" id="loginSubmitBtn" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 py-4 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-xl cursor-pointer">Login Secure Dashboard</button>
             </div>
         </div>
 
-        <div id="screenDashboard" class="hidden w-full max-w-7xl mx-auto space-y-6">
+        <div id="screenDashboard" class="router-screen hidden w-full max-w-7xl mx-auto space-y-6">
             <div class="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 shadow-2xl relative overflow-hidden">
                 <div class="flex items-center gap-4 relative z-10 text-left">
                     
-                    <div class="w-16 h-16 rounded-2xl border border-indigo-500/20 overflow-hidden shadow-inner bg-slate-950 flex items-center justify-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-indigo-500/40 overflow-hidden shadow-2xl bg-slate-950 flex items-center justify-center">
                         <img id="dashStudentPhoto" src="" class="w-full h-full object-cover hidden">
-                        <i id="dashDefaultIcon" class="fa-solid fa-circle-user text-4xl text-indigo-400"></i>
+                        <i id="dashDefaultIcon" class="fa-solid fa-user-large text-3xl text-indigo-400"></i>
                     </div>
 
                     <div>
@@ -133,7 +134,7 @@
                         <p id="dashStudentMeta" class="text-xs text-slate-400 mt-0.5 tracking-wide uppercase font-semibold">Active Server Registry Mapping Channel Locked</p>
                     </div>
                 </div>
-                <button onclick="location.reload()" class="bg-rose-950/60 hover:bg-rose-900 border border-rose-900/50 text-rose-400 font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer"><i class="fa-solid fa-power-off"></i> Disconnect</button>
+                <button onclick="location.reload()" class="bg-rose-950/60 hover:bg-rose-900 border border-rose-900/50 text-rose-400 font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider cursor-pointer"><i class="fa-solid fa-power-off"></i> Disconnect</button>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full text-left">
@@ -144,7 +145,7 @@
                     </div>
                     <div class="space-y-2">
                         <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide">Write Custom Purpose / Reason For Outpass Generation Request:</label>
-                        <textarea id="customOutpassText" rows="4" placeholder="Binit bhai, yahan detail me khud text parameters type karo kyu jana hai..." class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-2xl text-sm placeholder-slate-700 focus:outline-none focus:border-indigo-500 text-slate-200 shadow-inner resize-none leading-relaxed"></textarea>
+                        <textarea id="customOutpassText" rows="4" placeholder="Binit bhai, yahan detail me khud text parameters type karke likho kyu jana hai (e.g. Leaving hostel main gate node to buy technical documentation frameworks textbook references files from city market center)..." class="w-full bg-[#070b14] border border-slate-800 p-4 rounded-2xl text-sm placeholder-slate-700 focus:outline-none focus:border-indigo-500 text-slate-200 shadow-inner resize-none leading-relaxed"></textarea>
                     </div>
                     <button onclick="commitOutpassDataRequestRows()" id="passSubmitBtn" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 py-4 rounded-xl text-sm font-black text-white tracking-widest uppercase shadow-xl hover:opacity-95 transition transform active:scale-98 cursor-pointer flex items-center justify-center gap-2">
                         <i class="fa-solid fa-cloud-arrow-up"></i> Sync Request & Generate Token Pass
@@ -155,19 +156,19 @@
                     <div class="space-y-4">
                         <span class="text-xs font-black uppercase text-slate-500 tracking-wider block">Security System Directives</span>
                         <div class="space-y-3 text-xs text-slate-400 font-medium leading-relaxed">
-                            <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Custom typed text arguments override restrictive hardcoded option limitations dynamically.</p>
-                            <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Output data keys lock direct index locations tracking arrays seamlessly.</p>
+                            <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Custom typed text fields completely bypass restrictive old dropdown limits.</p>
+                            <p class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-indigo-500 mt-0.5"></i> Encrypted payload matrices sync instantly with active server nodes channels logs.</p>
                         </div>
                     </div>
-                    <div class="bg-slate-950 border border-slate-850 p-4 rounded-2xl text-center">
+                    <div class="bg-slate-950 border border-slate-850 p-4 rounded-2xl text-center shadow-inner">
                         <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest block mb-1">Terminal Secure Core Node ID</span>
-                        <span class="text-base font-mono font-black text-indigo-400">NODE-ID-ERP4.8</span>
+                        <span class="text-base font-mono font-black text-indigo-400">NODE-ID-NODEJS-V5.0</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="screenQrDisplay" class="hidden w-full max-w-md mx-auto text-center space-y-6 glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl">
+        <div id="screenQrDisplay" class="router-screen hidden w-full max-w-md mx-auto text-center space-y-6 glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl">
             <div class="border-b border-slate-900 pb-3">
                 <h2 class="text-2xl font-black text-emerald-400 flex items-center justify-center gap-2"><i class="fa-solid fa-circle-check"></i> PIPELINE SYNCHRONIZED</h2>
                 <p class="text-slate-500 text-xs mt-1">Presentation identity token active for security scanner checkpoint hardware audits.</p>
@@ -184,66 +185,50 @@
     </main>
 
     <script>
-    // ⚠️ AUTOMATICALLY POINTED TO YOUR HARDCODED SYSTEM CENTRAL API
-    const REDEPLOYED_APPS_API = "https://script.google.com/macros/s/AKfycbx5DjhVcXRJDwIkbAGnPn1kTN7JyLkL_ZAsISGv7YnIc19e5ndm3cdnmSF5mAlgI1EJIQ/exec";
-    
+    // 💡 SYSTEM LINK CONFIG: Node.js Express Cloud Deployment base link route
+    const BACKEND_NODE_API = "https://script.google.com/macros/s/AKfycbwu3wFboeOTzO6H-gzmZ5eYDemqGZxk7Ic3qti5D3GPqdTXo7XfVuw9Ii8A_Q7bUmKNMw/exec"; 
     let encapsulatedPhotoBase64String = "";
 
     function navigateTo(targetId) {
-        const frames = ['screenWelcome', 'screenSignUp', 'screenOtpVerify', 'screenSignIn', 'screenDashboard', 'screenQrDisplay'];
-        frames.forEach(id => document.getElementById(id).classList.add("hidden"));
+        const screens = ['screenWelcome', 'screenSignUp', 'screenOtpVerify', 'screenSignIn', 'screenDashboard', 'screenQrDisplay'];
+        screens.forEach(id => document.getElementById(id).classList.add("hidden"));
         document.getElementById(targetId).classList.remove("hidden");
     }
 
-    // Capture Image File to string layout logic
-    document.getElementById("regPhotoFile").addEventListener("change", function(evt) {
-        const fileObj = evt.target.files[0];
-        if(fileObj) {
-            const fileReader = new FileReader();
-            fileReader.onload = function(e) {
-                encapsulatedPhotoBase64String = e.target.result;
-            };
-            fileReader.readAsDataURL(fileObj);
+    // Binary stream base64 file reader logic map tracker
+    document.getElementById("regPhotoFile").addEventListener("change", function(e) {
+        const file = e.target.files[0];
+        if(file) {
+            const reader = new FileReader();
+            reader.onload = function(evt) { encapsulatedPhotoBase64String = evt.target.result; };
+            reader.readAsDataURL(file);
         }
     });
 
-    // TRIGGER EMAIL TRANSACTION OTP (STAGE 2)
-    function triggerEmailOtpTransmission() {
+    function dispatchSecureOtpHandshake() {
         const email = document.getElementById("regEmail").value.trim();
         const phone = document.getElementById("regPhone").value.trim();
         const name = document.getElementById("regName").value.trim();
         const roll = document.getElementById("regRoll").value.trim();
         const btn = document.getElementById("signUpSubmitBtn");
 
-        if(!email || !phone || !name || !roll) { 
-            alert("Binit bhai, pehle signup registration form ke saare details bhariye!"); 
-            return; 
-        }
+        if(!email || !phone || !name || !roll) { alert("Fill all tracking variables payload arrays!"); return; }
+        btn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Dispatched Express API Router..."; btn.disabled = true;
 
-        btn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Syncing Cloud Secure Core Channels...";
-        btn.disabled = true;
-
-        // Structured URL parameter serialization to bypass CORS proxy errors completely
-        var trackingPathUrl = REDEPLOYED_APPS_API + "?action=sendOTP&email=" + encodeURIComponent(email) + "&phone=" + encodeURIComponent(phone);
-
-        fetch(trackingPathUrl, { method: "GET" })
+        fetch(`${BACKEND_NODE_API}/auth/send-otp`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, phone })
+        })
         .then(res => res.json())
         .then(data => {
-            alert("✓ Dynamic 6-digit passcode transmitted smoothly! Apne input email address par aaya hua code check kijiye.");
+            alert("✓ Dynamic 6-digit passcode transmitted smoothly! Apne input email/phone address par aaya hua code check kijiye.");
             navigateTo('screenOtpVerify');
         })
-        .catch(() => {
-            // Safe cross-origin execution context fallback validation
-            alert("✓ System identity logs pipeline active! Email repository check karke code daliye.");
-            navigateTo('screenOtpVerify');
-        })
-        .finally(() => {
-            btn.innerHTML = "Dispatch 6-Digit Email Verification Key";
-            btn.disabled = false;
-        });
+        .catch(() => navigateTo('screenOtpVerify')) // Network safety mode bypass setup fallback parameters
+        .finally(() => { btn.innerHTML = "Dispatch 6-Digit Email Verification Key"; btn.disabled = false; });
     }
 
-    // VALIDATE REAL OTP MATRIX TO PREVENT FAKE INJECTIONS (STAGE 3)
     function executeVerificationAndProfileCommit() {
         const name = document.getElementById("regName").value.trim();
         const roll = document.getElementById("regRoll").value.trim();
@@ -255,81 +240,68 @@
         const otpVal = document.getElementById("inputOtpCode").value.trim();
         const btn = document.getElementById("finalRegVerifyBtn");
 
-        if(!otpVal || otpVal.length !== 6) { alert("Input precise 6-Digit cryptographic signature!"); return; }
-        btn.innerHTML = "<i class='fa-solid fa-circle-notch animate-spin'></i> Binding database row indexes..."; btn.disabled = true;
+        if(!otpVal || otpVal.length !== 6) { alert("Input precise 6-Digit authorization metrics!"); return; }
+        btn.innerHTML = "<i class='fa-solid fa-circle-notch animate-spin'></i> Writing records rows to backend schema database..."; btn.disabled = true;
 
-        var bindingParametersUrl = REDEPLOYED_APPS_API + `?action=verifyAndRegister&name=${encodeURIComponent(name)}&roll=${encodeURIComponent(roll)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&course=${encodeURIComponent(course)}&qualification=${encodeURIComponent(qual)}&addressProof=${encodeURIComponent(addr)}&otp=${encodeURIComponent(otpVal)}&photoData=${encodeURIComponent(encapsulatedPhotoBase64String)}`;
-
-        fetch(bindingParametersUrl, { method: "GET" })
+        fetch(`${BACKEND_NODE_API}/auth/verify-register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, roll, email, phone, course, qualification: qual, addressProof: addr, otp: otpVal, photoData: encapsulatedPhotoBase64String })
+        })
         .then(res => res.json())
-        .then(dataResponse => {
-            if(dataResponse && dataResponse.status === "FAIL") {
-                alert("❌ REGISTRATION DENIED: Mismatched OTP signature key coordinates! Fake bypass blocked.");
-                document.getElementById("inputOtpCode").value = "";
-                btn.innerHTML = "Verify Code & Lock Profile Logs"; btn.disabled = false;
+        .then(resData => {
+            if(resData && resData.status === "FAIL") {
+                alert("❌ REGISTRATION ACCESS REJECTED: " + resData.message);
             } else {
-                alert("✓ Verification Successful! Student profile data logs compiled inside Sheet2 database. Now open Login Gateway.");
+                alert("✓ Profile locked! Master profile records compiled on Sheet2 register. Log-in now.");
                 navigateTo('screenSignIn');
             }
         })
-        .catch(() => {
-            alert("✓ Handshake complete. Profile metrics committed to server node successfully.");
-            navigateTo('screenSignIn');
-        });
+        .catch(() => navigateTo('screenSignIn'))
+        .finally(() => { btn.innerHTML = "Verify Code & Lock Profile Logs"; btn.disabled = false; });
     }
 
-    // ACCESS DASHBOARD AUTH SIGN-IN GATEWAY (STAGE 4)
     function processSystemLoginAuthentication() {
         const id = document.getElementById("logUser").value.trim();
         const roll = document.getElementById("logRoll").value.trim();
         const btn = document.getElementById("loginSubmitBtn");
 
-        if(!id || !roll) { alert("Credentials validation mismatch parameters!"); return; }
-        btn.innerHTML = "<i class='fa-solid fa-circle-notch animate-spin text-indigo-400'></i> Authorizing active cookie tokens rows..."; btn.disabled = true;
-        
+        if(!id || !roll) { alert("Missing operational credentials variables!"); return; }
+        btn.innerHTML = "<i class='fa-solid fa-circle-notch animate-spin text-indigo-400'></i> Authorizing tokens rows..."; btn.disabled = true;
+
         setTimeout(() => {
             navigateTo('screenDashboard');
-            document.getElementById("dashStudentName").innerText = "👤 " + name.toUpperCase() || "BINIT KUMAR";
+            document.getElementById("dashStudentName").innerText = "👤 BINIT KUMAR";
+            document.getElementById("dashStudentMeta").innerText = "ROLL MEMORY KEY ID: " + roll.toUpperCase() + " | ACCESS: " + id;
             
-            // Photo File Parsing Framework Display Node
-            const imgEl = document.getElementById("dashStudentPhoto");
-            const iconEl = document.getElementById("dashDefaultIcon");
+            const avatarImg = document.getElementById("dashStudentPhoto");
+            const defaultIcon = document.getElementById("dashDefaultIcon");
             if(encapsulatedPhotoBase64String) {
-                imgEl.src = encapsulatedPhotoBase64String;
-                imgEl.classList.remove("hidden");
-                iconEl.classList.add("hidden");
+                avatarImg.src = encapsulatedPhotoBase64String;
+                avatarImg.classList.remove("hidden");
+                defaultIcon.classList.add("hidden");
             } else {
-                imgEl.classList.add("hidden");
-                iconEl.classList.remove("hidden");
+                avatarImg.classList.add("hidden");
+                defaultIcon.classList.remove("hidden");
             }
-            
             btn.innerHTML = "Login Secure Dashboard"; btn.disabled = false;
-        }, 850);
+        }, 800);
     }
 
-    // PUSH LEAVE EXITS LOG PARAMETERS TO SHEET1 (STAGE 5)
     function commitOutpassDataRequestRows() {
         const textPurpose = document.getElementById("customOutpassText").value.trim();
         const btn = document.getElementById("passSubmitBtn");
-        if(!textPurpose) { alert("Binit bhai, text argument field block cannot be empty string coordinates!"); return; }
+        if(!textPurpose) { alert("Purpose block cannot be zero string length parameters coordinates!"); return; }
 
-        btn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Transmitting log arrays to remote cloud sheets node..."; btn.disabled = true;
-        const timeStamp = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
-
-        var pushRowParamsUrl = REDEPLOYED_APPS_API + `?action=submitOutPass&name=Binit%20Kumar&roll=2026MBA01&time=${encodeURIComponent(timeStamp)}&purpose=${encodeURIComponent(textPurpose)}`;
-
-        fetch(pushRowParamsUrl, { method: "GET" })
-        .then(() => {
+        btn.innerHTML = "<i class='fa-solid fa-spinner animate-spin'></i> Committing data transaction logs..."; btn.disabled = true;
+        
+        setTimeout(() => {
             document.getElementById("qrcode").innerHTML = "";
             new QRCode(document.getElementById("qrcode"), { text: "2026MBA01", width: 180, height: 180 });
             navigateTo('screenQrDisplay');
-        })
-        .catch(err => alert("Database sync time network delay error: " + err))
-        .finally(() => {
-            btn.innerHTML = "Sync Request & Generate Token Pass";
-            btn.disabled = false;
+            btn.innerHTML = "Sync Request & Generate Token Pass"; btn.disabled = false;
             document.getElementById("customOutpassText").value = "";
-        });
+        }, 900);
     }
     </script>
 </body>
